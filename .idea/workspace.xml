@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Biblio/inc/pdo.php" />
     <list default="true" id="bb5b5c1f-08f6-4830-a6df-177454bdb63f" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
