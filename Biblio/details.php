@@ -1,23 +1,42 @@
 <?php
 
-$host = '54.36.182.179';
-$dbname = 'groupe_D';
-$username = 'cdi';
-$passwd = 'cdi2017';
+include 'inc/pdo.php';
 
-try {
-    $dbh = new PDO('mysql:host=' . $host . ';dbname=' . $dbname . ';charset=utf8', $username, $passwd);
-} catch (Exception $e) {
-    die('Erreur : ' . $e->getMessage());
-}
-
-$sql = 'SELECT * FROM Livre';
-
-foreach ($dbh->query($sql) as $row) {
-    echo '<pre>' . $row . '</pre>';
-}
-
+/* Variables temporaires pour le dev */
+$PATH = 'http://54.36.182.179/groupe_D';
+if (isset($_GET['livre']) && !empty($_GET['livre']))
+    $idLivre = $_GET['livre'];
+else
+    $idLivre = 1;
+$sql = 'SELECT * FROM Livre WHERE Id=' . $idLivre;
+$rep = $dbh->query($sql);
+$livre = $rep->fetch();
+/* Contenu de la table livre :
+- id (int)
+- Titre
+- Auteur
+- Edition
+- Description
+- Image
+- Parution
+- Type (livre/revue)
+*/
 
 ?>
 
-<div>oh</div>
+
+<!-- À supprimer -->
+<html>
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/details.css">
+</head>
+<body>
+
+<img style="width: 100px;" src="<?= $PATH ?>/img/<?= $livre['Image'] ?>"/>
+<pre>
+<? print_r($livre); ?>
+</pre>
+
+</body>
+</html>

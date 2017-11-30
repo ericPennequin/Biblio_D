@@ -12,46 +12,256 @@
     <schema id="6" parent="1" name="groupe_C"/>
     <schema id="7" parent="1" name="groupe_E"/>
     <schema id="8" parent="1" name="information_schema"/>
-    <table id="9" parent="2" name="Livre"/>
-    <column id="10" parent="9" name="Titre">
+    <table id="9" parent="2" name="Administrateur"/>
+    <table id="10" parent="2" name="Categories"/>
+    <table id="11" parent="2" name="CategoriesLivre"/>
+    <table id="12" parent="2" name="Livre"/>
+    <table id="13" parent="2" name="Notes"/>
+    <table id="14" parent="2" name="Reservation"/>
+    <table id="15" parent="2" name="User"/>
+    <column id="16" parent="9" name="Nom">
       <Position>1</Position>
-      <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
+      <DataType>varchar(45)|0</DataType>
     </column>
-    <column id="11" parent="9" name="Auteur">
+    <column id="17" parent="9" name="Mdp">
       <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
+      <DataType>varchar(45)|0</DataType>
     </column>
-    <column id="12" parent="9" name="Edition">
+    <column id="18" parent="9" name="Autorisation">
       <Position>3</Position>
-      <DataType>varchar(45)|0</DataType>
+      <DataType>tinyint(4)|0</DataType>
     </column>
-    <column id="13" parent="9" name="Description">
+    <column id="19" parent="9" name="Id">
       <Position>4</Position>
-      <DataType>longtext|0</DataType>
-    </column>
-    <column id="14" parent="9" name="Image">
-      <Position>5</Position>
-      <DataType>varchar(15)|0</DataType>
-    </column>
-    <column id="15" parent="9" name="Parution">
-      <Position>6</Position>
-      <DataType>varchar(45)|0</DataType>
-    </column>
-    <column id="16" parent="9" name="Id">
-      <Position>7</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="17" parent="9" name="Type">
+    <index id="20" parent="9" name="Id_UNIQUE">
+      <ColNames>Id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="21" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>Id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="22" parent="9" name="Id_UNIQUE">
+      <ColNames>Id</ColNames>
+      <UnderlyingIndexName>Id_UNIQUE</UnderlyingIndexName>
+    </key>
+    <column id="23" parent="10" name="Categorie">
+      <Position>1</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="24" parent="10" name="Id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <index id="25" parent="10" name="Id_UNIQUE">
+      <ColNames>Id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="26" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>Id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="27" parent="10" name="Id_UNIQUE">
+      <ColNames>Id</ColNames>
+      <UnderlyingIndexName>Id_UNIQUE</UnderlyingIndexName>
+    </key>
+    <column id="28" parent="11" name="IdLivre">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="11" name="IdCat">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="30" parent="11" name="Id_idx">
+      <ColNames>IdLivre</ColNames>
+    </index>
+    <index id="31" parent="11" name="Id_idx1">
+      <ColNames>IdCat</ColNames>
+    </index>
+    <foreign-key id="32" parent="11" name="LivreCat">
+      <ColNames>IdLivre</ColNames>
+      <RefSchemaName>groupe_D</RefSchemaName>
+      <RefTableName>Livre</RefTableName>
+      <RefColNames>Id</RefColNames>
+    </foreign-key>
+    <foreign-key id="33" parent="11" name="Categories">
+      <ColNames>IdCat</ColNames>
+      <RefSchemaName>groupe_D</RefSchemaName>
+      <RefTableName>Categories</RefTableName>
+      <RefColNames>Id</RefColNames>
+    </foreign-key>
+    <column id="34" parent="12" name="Id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="35" parent="12" name="Titre">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="36" parent="12" name="Auteur">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="37" parent="12" name="Edition">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="38" parent="12" name="Description">
+      <Position>5</Position>
+      <DataType>longtext|0</DataType>
+    </column>
+    <column id="39" parent="12" name="Image">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="40" parent="12" name="Parution">
+      <Position>7</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="41" parent="12" name="Type">
       <Position>8</Position>
       <DataType>enum(&apos;livre&apos;, &apos;revue&apos;)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="18" parent="9" name="Id_UNIQUE">
+    <index id="42" parent="12" name="Id_UNIQUE">
       <ColNames>Id</ColNames>
       <Unique>1</Unique>
     </index>
+    <key id="43" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>Id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="44" parent="12" name="Id_UNIQUE">
+      <ColNames>Id</ColNames>
+      <UnderlyingIndexName>Id_UNIQUE</UnderlyingIndexName>
+    </key>
+    <column id="45" parent="13" name="Commentaire">
+      <Position>1</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="46" parent="13" name="Notes">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="47" parent="13" name="Valide">
+      <Position>3</Position>
+      <DataType>tinyint(4)|0</DataType>
+    </column>
+    <column id="48" parent="13" name="IdLivre">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="13" name="IdUser">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="50" parent="13" name="Id_idx">
+      <ColNames>IdLivre</ColNames>
+    </index>
+    <index id="51" parent="13" name="Id_idx1">
+      <ColNames>IdUser</ColNames>
+    </index>
+    <foreign-key id="52" parent="13" name="LivreNotes">
+      <ColNames>IdLivre</ColNames>
+      <RefSchemaName>groupe_D</RefSchemaName>
+      <RefTableName>Livre</RefTableName>
+      <RefColNames>Id</RefColNames>
+    </foreign-key>
+    <foreign-key id="53" parent="13" name="UserNotes">
+      <ColNames>IdUser</ColNames>
+      <RefSchemaName>groupe_D</RefSchemaName>
+      <RefTableName>User</RefTableName>
+      <RefColNames>Id</RefColNames>
+    </foreign-key>
+    <column id="54" parent="14" name="DateDebut">
+      <Position>1</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="55" parent="14" name="DateFin">
+      <Position>2</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="56" parent="14" name="IdLivre">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="57" parent="14" name="IdUser">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="58" parent="14" name="IdLivre_idx">
+      <ColNames>IdLivre</ColNames>
+    </index>
+    <index id="59" parent="14" name="Id_idx">
+      <ColNames>IdUser</ColNames>
+    </index>
+    <foreign-key id="60" parent="14" name="IdLivre">
+      <ColNames>IdLivre</ColNames>
+      <RefSchemaName>groupe_D</RefSchemaName>
+      <RefTableName>Livre</RefTableName>
+      <RefColNames>Id</RefColNames>
+    </foreign-key>
+    <foreign-key id="61" parent="14" name="Id">
+      <ColNames>IdUser</ColNames>
+      <RefSchemaName>groupe_D</RefSchemaName>
+      <RefTableName>User</RefTableName>
+      <RefColNames>Id</RefColNames>
+    </foreign-key>
+    <column id="62" parent="15" name="Nom">
+      <Position>1</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="63" parent="15" name="Prenom">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="64" parent="15" name="Promotion">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="65" parent="15" name="Id">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <index id="66" parent="15" name="Id_UNIQUE">
+      <ColNames>Id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="67" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>Id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="68" parent="15" name="Id_UNIQUE">
+      <ColNames>Id</ColNames>
+      <UnderlyingIndexName>Id_UNIQUE</UnderlyingIndexName>
+    </key>
   </database-model>
 </dataSource>
