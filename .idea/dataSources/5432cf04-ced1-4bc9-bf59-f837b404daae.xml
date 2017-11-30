@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="groupe_D@54.36.182.179">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="groupe_D">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="cdi"/>
+    <schema id="4" parent="1" name="groupe_A"/>
+    <schema id="5" parent="1" name="groupe_B"/>
+    <schema id="6" parent="1" name="groupe_C"/>
+    <schema id="7" parent="1" name="groupe_E"/>
+    <schema id="8" parent="1" name="information_schema"/>
+    <table id="9" parent="2" name="Livre"/>
+    <column id="10" parent="9" name="Titre">
+      <Position>1</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="11" parent="9" name="Auteur">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="12" parent="9" name="Edition">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="13" parent="9" name="Description">
+      <Position>4</Position>
+      <DataType>longtext|0</DataType>
+    </column>
+    <column id="14" parent="9" name="Image">
+      <Position>5</Position>
+      <DataType>varchar(15)|0</DataType>
+    </column>
+    <column id="15" parent="9" name="Parution">
+      <Position>6</Position>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="16" parent="9" name="Id">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="17" parent="9" name="Type">
+      <Position>8</Position>
+      <DataType>enum(&apos;livre&apos;, &apos;revue&apos;)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="18" parent="9" name="Id_UNIQUE">
+      <ColNames>Id</ColNames>
+      <Unique>1</Unique>
+    </index>
+  </database-model>
+</dataSource>
