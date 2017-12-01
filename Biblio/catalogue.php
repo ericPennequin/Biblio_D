@@ -1,30 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: cdi
- * Date: 29/11/2017
- * Time: 14:16
- */
-$title ="catalogue";
 
+include 'class/Catalog.php';
+include 'class/Book.php';
 
-include "header.php";
+$nbResults = 10;
+
+$catalogue = new Catalog();
+$catalogue->getCatalog($nbResults);
+
 ?>
-    <div class="container page">
-        <div class="row">
-            <small><?php echo $title; ?></small>
 
-        </div>
-
-
-
-    </div>
-
-
-
-
-
-
-<?php
-include "footer.php";
-?>
+<pre>
+    <? print_r($catalogue->catalogue); ?>
+</pre>

@@ -1,6 +1,5 @@
 <?php
 
-include 'inc/pdo.php';
 include 'class/Book.php';
 
 /* Variables temporaires pour le dev */
@@ -10,7 +9,7 @@ else
     $idLivre = 1;
 
 $details = new Book($idLivre);
-$details->getBookData();
+$details->getBookDetails();
 
 if (isset($details->id) || !empty($details->id))
     echo "ok";
@@ -23,8 +22,12 @@ else
 <!-- À supprimer -->
 <html>
 <head>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/details.css">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/bootstrap.js"></script>
 </head>
 <body>
 
@@ -69,6 +72,28 @@ if (count($details->reservations) > 0) {
 ?>
 note globale : <?= $moyenne ?>
 
-<button class="reservation" data-book="<?= $details->id?>" id="reserver">Réserver</button>
+<button class="reservation btn btn-primary" data-book="<?= $details->id?>" id="reserver" data-toggle="modal" data-target="#modal-reservation" type="button">Réserver</button>
+
+<!-- Modal de réservation -->
+<div class="modal fade" id="modal-reservation" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Réservation</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Réserver</button>
+                <button type="button" class="btn btn-lg btn-default-outline" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 </body>
 </html>

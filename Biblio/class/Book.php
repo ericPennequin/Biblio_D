@@ -1,5 +1,7 @@
 <?php
 
+include 'inc/pdo.php';
+
 Class Book
 {
     // Propriétés des livres
@@ -27,18 +29,18 @@ Class Book
     /**
      * récupération de toutes les informations du livre
      */
-    public function getBookData()
+    public function getBookDetails()
     {
-        $this->getBook();
-        $this->getBookCategories();
-        $this->getBookNotes();
-        $this->getBookReservations();
+        $this->getBookInfosDetails();
+        $this->getBookCategoriesDetails();
+        $this->getBookNotesDetails();
+        $this->getBookReservationsDetails();
     }
 
     /**
      * récupération des infos du livre
      */
-    private function getBook()
+    private function getBookInfosDetails()
     {
         global $dbh;
 
@@ -62,7 +64,7 @@ Class Book
     /**
      * récupération des catégories du livre
      */
-    private function getBookCategories()
+    private function getBookCategoriesDetails()
     {
         global $dbh;
 
@@ -86,7 +88,7 @@ Class Book
     /**
      * récupération des notes et commentaires du livre
      */
-    private function getBookNotes()
+    private function getBookNotesDetails()
     {
         global $dbh;
 
@@ -113,7 +115,7 @@ Class Book
     /**
      * récupération des réservations du livre
      */
-    private function getBookReservations()
+    private function getBookReservationsDetails()
     {
         global $dbh;
 
@@ -133,24 +135,10 @@ Class Book
         }
     }
 
-    public function rawDisplay()
+    /*public function rawDisplay()
     {
         echo "<pre>";
         print_r($this);
         echo "</pre>";
-    }
+    }*/
 }
-
-/*
-
-
-/* Contenu de la table livre :
-- id (int)
-- Titre
-- Auteur
-- Edition
-- Description
-- Image
-- Parution
-- Type (livre/revue)
-*/
