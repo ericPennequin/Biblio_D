@@ -8,9 +8,15 @@ if (isset($_GET['livre']) && !empty($_GET['livre']))
     $idLivre = $_GET['livre'];
 else
     $idLivre = 1;
-$sql = 'SELECT * FROM Livre WHERE Id=' . $idLivre;
-$rep = $dbh->query($sql);
-$livre = $rep->fetch();
+$sql = '
+  SELECT `Livre`.*, `Reservation`.*
+  FROM `Livre`
+  LEFT JOIN `Reservation` ON `Reservation`.`IdLivre` = `Livre`.`Id`
+  WHERE `Livre`.`Id`= ?';
+$stmt = $dbh->prepare($sql);
+$stmt->execute(array($idLivre));
+//$rep = $dbh->query($sql);
+$livre = $stmt->fetch();
 /* Contenu de la table livre :
 - id (int)
 - Titre
