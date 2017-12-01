@@ -17,6 +17,7 @@ $stmt = $dbh->prepare($sql);
 $stmt->execute(array($idLivre));
 //$rep = $dbh->query($sql);
 $livre = $stmt->fetch();
+
 /* Contenu de la table livre :
 - id (int)
 - Titre
