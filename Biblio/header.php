@@ -5,7 +5,8 @@
  * Date: 29/11/2017
  * Time: 15:34
  */
-include "inc/functions.php"
+include "inc/functions.php";
+
 
 
 ?>
