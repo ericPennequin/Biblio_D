@@ -1,4 +1,7 @@
 
+<<<<<<< HEAD
+.idea/workspace.xml
+=======
 .idea/Biblio_D.iml
 .idea/workspace.xml
 .idea/vcs.xml
@@ -6,4 +9,5 @@
 .idea/vcs.xml
 .idea/vcs.xml
 .idea/vcs.xml
+>>>>>>> page_details
 *.xml
